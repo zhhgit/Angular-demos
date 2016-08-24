@@ -1,0 +1,139 @@
+<div ng-controller="billDetailCtrl">
+    <!--billItem-->
+    <div class = "billItem">
+        <div class="billItemLeft">
+            <img class = "billItemImg" ng-src = "{{billItem.setBillPicPath}}" />
+        </div>
+        <div class="billItemRight">
+            <div class="billItemRightContainer">
+                <div class="billItemDesTitle fl">{{billItem.brandNm}}</div>
+                <div class="billItemDesReduce fl">{{billItem.ticketNm}}</div>
+                <div class="billItemDesRemain fl">{{billItem.setLeftNum}}</div>
+                <div class="billItemDesGot fl">
+                    <span class="billItemDesSalePrice">{{billItem.setSalePrice}}</span>
+                    <span class="billItemDesOriginPrice">{{billItem.setOriginPrice}}</span>
+                    <span class="billItemDesGotR">{{billItem.setDownloadNum}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--buttonArea-->
+    <div>
+        <div class="buttonArea">
+            <button class="getButton">立即获取</button>
+            <div class="servicePromise">
+                服务承诺：
+                <span><img class="servicePromiseImg" src="./image/apt.png" /></span>
+                <span>免预约</span>
+            </div>
+        </div>
+        <div class="waveArea"></div>
+    </div>
+
+    <!--cardRequire-->
+    <div>
+        <div class="detailTitle">用卡要求</div>
+        <div class="textAreaBox">
+            <div class="textArea">
+                {{cardRequire.billRestrictDesc}}
+            </div>
+        </div>
+    </div>
+
+    <!--userNotes-->
+    <div>
+        <div class="detailTitle">用户须知</div>
+        <div class="textAreaBox">
+            <div class="textArea">
+                <p>有效日期：</p>
+                <p>{{userNotes.billBeginDtYear}}-{{userNotes.billBeginDtMouth}}-{{userNotes.billBeginDtDay}}至{{userNotes.billEndDtYear}}-{{userNotes.billEndDtMouth}}-{{userNotes.billEndDtDay}}</p>
+                <p>优惠说明：</p>
+                <p>{{userNotes.billRule}}</p>
+                <p>使用规则：</p>
+                <p ng-bind-html="userNotes.userInstructions"></p>
+            </div>
+        </div>
+    </div>
+
+    <!--clientService-->
+    <div>
+        <div class="detailTitle">客户服务</div>
+        <div class="textAreaBox">
+            <div class="textArea">
+                服务热线：95516；<br />
+                票券编码：{{clientService.billId}}；<br />
+                (该编码仅用于向客服提问时使用，不用于承兑)
+            </div>
+        </div>
+    </div>
+
+    <!--nearPlace-->
+    <div class="bottomLine">
+        <div class="detailTitleLink">
+            <span class="titleName">离您最近：{{nearPlace.name}}</span>
+            <span class="titleLink">全部适用门店<span class="icon-arrow-blue"></span></span>
+        </div>
+
+        <div class="iconLinkItemBox">
+            <div class="iconLinkItem" >
+                <img class="iconLinkItemIcon" src="./image/icon-addr.png" />
+                <span class="iconLinkItemInfo">{{nearPlace.addr}}</span>
+                <span class="icon-arrow-gray"></span>
+            </div>
+        </div>
+        <div class="iconLinkItemBox">
+            <div class="iconLinkItem" >
+                <img class="iconLinkItemIcon" src="./image/icon-phone.png" />
+                <span class="iconLinkItemInfo">{{nearPlace.phone}}</span>
+                <span class="icon-arrow-gray"></span>
+            </div>
+        </div>
+        <div class="iconLinkItemBox">
+            <div class="iconLinkItem" >
+                <img class="iconLinkItemIcon" src="./image/icon-time.png" />
+                <span class="iconLinkItemInfo">营业时间：{{nearPlace.bussHour}}</span>
+                <span class="icon-arrow-gray"></span>
+            </div>
+        </div>
+    </div>
+
+    <!--relatedCoupon-->
+    <div class="bottomLine">
+        <div class="detailTitle">相关优惠</div>
+        <div class="iconLinkItemBox" ng-repeat="item in relatedCoupon">
+            <div class="iconLinkItem">
+                <img class="iconLinkItemIcon" src="./image/icon-coupon.png" />
+                <span class="iconLinkItemInfo">{{item.ticketNm}}</span>
+                <span class="icon-arrow-gray"></span>
+            </div>
+        </div>
+    </div>
+
+    <!--merchant-->
+    <div>
+        <div class="detailTitleLink">
+            <span class="titleName">{{merchant.brandNm}}</span>
+            <span class="titleLink">商户详情<span class="icon-arrow-blue"></span></span>
+        </div>
+        <div class="textAreaBox">
+            <div class="textArea">
+                {{merchant.brandDesc}}
+            </div>
+        </div>
+    </div>
+
+    <!--comment-->
+    <div>
+        <div class="commentTitle">用户评论</div>
+        <div class="commentItem" ng-repeat="item in comment">
+            <div class="commentFirstLine">
+                <span class="commentInfo">{{item.usrNm}}&nbsp;{{item.commentFeedbackTime}}</span>
+                 <span class="commentStar">
+                     <span ng-class="eachStar" ng-repeat="eachStar in item.starClassArray track by $index" >&nbsp;</span>
+                 </span>
+            </div>
+            <div class="commentDetail">{{item.commentInf}}</div>
+        </div>
+    </div>
+</div>
